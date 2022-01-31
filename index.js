@@ -1,6 +1,7 @@
+
 const TelegramBot = require('node-telegram-bot-api')
 const data = require('./data.json').data
-const token = '5091648941:AAFTNskhhY7HKQzijvmrBGjJGcV9VXtXth0'
+const token = '5091648941:AAHoACEET84A0H7PrYbirfYJ_L7jX5B0bWU'
 const bot = new TelegramBot(token, { polling: true, autoStart: true })
 const buttons = {
     btns () {
@@ -58,7 +59,6 @@ const total = (json = false, array) => {
     }, 0)).toFixed(0).replace(/[^0-9]/g, "").match(/.{1,3}(?=(.{3})*$)/g).join(' ')}</b> рублей`
 }
 const start = () => {
-    let msgId
     bot.on('message', async msg => {
         const text = msg.text
         const chatId = msg.chat.id
