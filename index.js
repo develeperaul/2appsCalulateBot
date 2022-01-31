@@ -56,9 +56,9 @@ const total = (json=false,array)=>{
         return a*b
     },0)).toFixed(0).replace(/[^0-9]/g, "").match(/.{1,3}(?=(.{3})*$)/g).join(' ')}</b> рублей`
 }
-const start = () =>{
+const start = async() =>{
     let msgId
-    bot.on('message', async msg =>{
+    await bot.on('message', async msg =>{
         const text = msg.text
         const chatId = msg.chat.id
         if(text === '/start'){
@@ -86,7 +86,7 @@ const start = () =>{
         await bot.deleteMessage(chatId, msg.message_id)
         return bot.sendMessage(chatId, 'Я вас не понимаю, попробуйте еще раз')
     })
-    bot.on('callback_query', async msg => {
+    await bot.on('callback_query', async msg => {
 
         const {message: {chat,message_id}} = msg
 
