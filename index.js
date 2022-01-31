@@ -62,6 +62,7 @@ const start = () => {
     bot.on('message', async msg => {
         const text = msg.text
         const chatId = msg.chat.id
+        console.log(msg)
         if (text === '/start') {
             list.splice(0, list.length)
             sum = 0
@@ -76,12 +77,13 @@ const start = () => {
         if (msg.contact) {
             return bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/f38/7e7/f387e7a9-deef-4dfe-8d1a-23a07a56e409/6.webp')
         }
-        if (msg.entities[0].type == 'phone_number') {
-            console.log('hi')
+        if (msg.entities&&msg.entities[0].type == 'phone_number') {
+            
             await bot.sendMessage(chatId, JSON.stringify([list, total(false, list), choiceList, msg.chat.first_name, msg.chat.username]))
             return bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/f38/7e7/f387e7a9-deef-4dfe-8d1a-23a07a56e409/6.webp')
         }
-        console.log(msg)
+        if (text) {
+        }
 
         await bot.deleteMessage(chatId, msg.message_id - 1)
         await bot.deleteMessage(chatId, msg.message_id)
