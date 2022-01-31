@@ -75,7 +75,7 @@ const start = () =>{
         if(msg.contact){
             return bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/f38/7e7/f387e7a9-deef-4dfe-8d1a-23a07a56e409/6.webp')
         }
-        if(msg?.entities&&msg.entities[0].type == 'phone_number'){
+        if(msg.entities[0].type == 'phone_number'){
             console.log('hi')
             await bot.sendMessage(chatId, JSON.stringify([list,total(false,list),choiceList,msg.chat.first_name,msg.chat.username]))
             return bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/f38/7e7/f387e7a9-deef-4dfe-8d1a-23a07a56e409/6.webp')
